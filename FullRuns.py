@@ -782,7 +782,5 @@ async def ButtonCollor():
             await lancamento.L08()
             motor_pair.unpair(motor_pair.PAIR_1)
             continue
-            
-            
 
 runloop.run(main(), ButtonCollor())
