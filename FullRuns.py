@@ -473,40 +473,39 @@ class Lancamentos():
                         await motor.run_for_time(port.B,900, -500)
 
                         await motor_pair.move_for_time(motor_pair.PAIR_1, 2000, 0, velocity=-1000)
-    async def L02(self):
+     async def L02(self):
             motor_pair.pair(motor_pair.PAIR_1, port.F, port.E)
             motor.reset_relative_position(port.D, 0)
 
 
-            await movimento(0.75)
-            await motor.run_for_time(port.B, 500, -400)
-            await movimento(duration_seconds= 1.30, power=-500 )
+            await movimento(0.53,900)
+            await motor.run_for_time(port.B, 560, -300)
+            await movimento(duration_seconds= 0.9, power=-900 )
             await motor.run_for_time(port.B, 490, 490 )
-            time.sleep_ms(3000)
+            time.sleep_ms(2500)
 
-            await movimento(1.65)
+            await movimento(0.88, 900)
             await motor.run_for_time(port.B, 1350, -55)
             await motor.run_for_time(port.B, 700, 400)
-            await movimento(0.65, -400)
+            await movimento(0.4, -900)
 
             await spike.Girar(-90)
 
 
-            await movimento(0.9)
-            await spike.Girar(90)
-            await movimento(0.95, 600)
-            await spike.Girar(90)
-            await motor.run_for_time(port.D, 300, 124)
+            await movimento(0.5, 800)
+            await spike.Girar(90, 'YES')
+            await movimento(0.77, 800)
+            await spike.Girar(85)
+            await motor.run_for_time(port.D, 300, 115)
             time.sleep_ms(200)
 
 
-            await movimento(0.55, 450)
-            await motor.run_for_time(port.D, 2000, -55)
+            await movimento(0.45, 650)
+            await motor.run_for_time(port.D, 2500, -65)
 
-            await movimento(0.8, -370)
+            await movimento(1.7, -350)
+            await movimento(0.5, 450)
             await spike.Girar(45)
-            await movimento(1.5, 1000)
-
     async def L03(self):
         motor_pair.pair(motor_pair.PAIR_1, port.F, port.E)
         motor.run_for_time(port.D, 1200, 450)
