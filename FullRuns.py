@@ -655,42 +655,40 @@ class Lancamentos():
                 motor_pair.pair(motor_pair.PAIR_1, port.F, port.E)
 
                 motor.reset_relative_position(port.D, 0)
-                await spike.Definir_Velocidade_Anexos(50)
-                await movimento(1.82, 850 )
-                await spike.Girar(90, 'YES')
-                await movimento(0.52, 850)
-                await motor.run_for_time(port.D, 2000, 200)
-                await motor.run_to_relative_position(port.D, 0, 300, deceleration=600)
+                await spike.Definir_Velocidade_Anexos(35)
+                await movimento(1.8, 800 )
 
-                # motor.run_for_time(port.D, 900, -180)
-
-                await movimento(0.7, -600)
-
-                await spike.Girar(30, 'YES')
-                # await motor.run_to_relative_position(port.D, 0, -300, deceleration=600)
+                await spike.Girar(80, 'no')
                 
-                # await motor.run_to_absolute_position(port.D, 100, 300, direction=SHORTEST_PATH, stop=BRAKE, acceleration=800, deceleration=600,)
+                await movimento(0.6, 800)
+                
+                await motor.run_for_time(port.D, 2500, 200)
+                
+                motor.run_for_time(port.D, 800, -200)
 
-                await spike.Manutencao_Guinada()
+                # await movimento(0.7, -600)
 
-                await movimento(0.5, 750)
-                await spike.Girar(-35, 'YES')
+                # await spike.Girar(30, 'YES')
 
-                await spike.mover_forward(0.65, 'NO', 800)
+                # await movimento(0.5, 750)
+                # await spike.Girar(-35, 'YES')
+
+                await movimento(0.55, 800)
 
                 await spike.Girar(-45, 'NO')
 
-                await movimento(0.68, 600)
+                await movimento(0.78, 600)
 
-                await spike.MoverMotor('descer', port.B, 1700)
+                await spike.MoverMotor('descer', port.B, 1850)
 
-                await movimento(0.6, -900)
+                await movimento(0.55, -900)
 
-                await spike.Girar(85, 'YES')
+                await spike.Girar(75, 'NO')
 
                 await movimento(1.4, 700)
                 
-                await movimento(0.66, -800)
+                await movimento(0.73, -800)
+
 
 
 
