@@ -693,7 +693,6 @@ class Lancamentos():
 
 
 
-
 lancamento = Lancamentos()
 
 # Função principal
