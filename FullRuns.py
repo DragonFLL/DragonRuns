@@ -484,8 +484,8 @@ class Lancamentos():
             await motor.run_for_time(port.B, 490, 490 )
             time.sleep_ms(2500)
 
-            await movimento(1.15, 650)
-            await motor.run_for_time(port.B, 1350, -55)
+            await movimento(1.2, 600)
+            await motor.run_for_time(port.B, 1200, -55)
             await motor.run_for_time(port.B, 700, 400)
             await movimento(0.4, -900)
 
@@ -494,13 +494,13 @@ class Lancamentos():
 
             await movimento(0.45, 700)
             await spike.Girar(90, 'YES')
-            await movimento(1, 700)
+            await movimento(1, 690)
             await spike.Girar(85, 'yes')
-            await motor.run_for_time(port.D, 457, 170)
+            await motor.run_for_time(port.D, 480, 170)
             time.sleep_ms(200)
 
 
-            await movimento(0.5, 650)
+            await movimento(0.5, 450)
             await motor.run_for_time(port.D, 1400, -65)
 
            
@@ -508,6 +508,11 @@ class Lancamentos():
             
             await spike.Girar(45)
             await movimento(2, 1000)
+
+            while True:
+                if button.pressed(button.LEFT):
+                    await movimento(1.2, -100)
+                    await movimento(0.7, 800)
     async def L03(self):
         motor_pair.pair(motor_pair.PAIR_1, port.F, port.E)
         motor.run_for_time(port.D, 1200, 450)
