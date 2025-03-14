@@ -122,7 +122,7 @@ class Robot():
                 # Move o robô usando as velocidades calculadas
                 motor_pair.move_tank(motor_pair.PAIR_1, left_speed, right_speed)
 
-        
+
             time.sleep(intervalo)
 
         # Após o término do loop, para os motores
@@ -155,7 +155,7 @@ class Robot():
             while abs(error) > tolerance:
                 error = target_value - (motion_sensor.tilt_angles()[0] / 10)
 
-                
+
                 slowdown_factor = max(1, abs(error) / target_value)
                 # Aplica o fator ao controle de saída
                 controller_output = (error * p_constant) * slowdown_factor
@@ -281,7 +281,7 @@ async def movimento(duration_seconds, power=400, status="NO", kp=1, TARGET = 0):
 
         vel_direita, vel_esquerda, angulo_atual, AjusteFinal = PID(target=TARGET, kp=kp, ki=0.01, kd=1.5, power=current_power)
 
-        motor_pair.move_tank(motor_pair.PAIR_1, vel_direita,  vel_esquerda)
+        motor_pair.move_tank(motor_pair.PAIR_1, vel_direita,vel_esquerda)
         time.sleep(0.1)
 
     motor_pair.stop(motor_pair.PAIR_1, stop=SMART_BRAKE)
@@ -325,7 +325,7 @@ class Lancamentos():
 
 
             await movimento(0.976, 700, 'YES')
-            
+
             await spike.Girar(33)
 
             await motor.run_for_time(port.B, 500, -400)
@@ -337,15 +337,15 @@ class Lancamentos():
             await motor.run_for_time(port.D, 600, -400)
 
             await spike.Girar(-38)
-            
+
             await motor.run_for_time(port.B, 500, 400)
 
             await movimento(0.5, 1000, 'YES')
 
             await motor.run_for_time(port.B, 480, -400)
 
-            await movimento(1.3, -1000)
-            await motor_pair.move_for_time(motor_pair.PAIR_1, 1800, 3, velocity=-1000)
+            await movimento(1.677, -1000)
+            # await motor_pair.move_for_time(motor_pair.PAIR_1, 1800, 3, velocity=-1000)
 
 
             time.sleep(2)
@@ -354,14 +354,14 @@ class Lancamentos():
 
             await motor_pair.move_for_time(motor_pair.PAIR_1, 2300, 0, velocity=1000)
 
-            time.sleep(2.5)
+            time.sleep(3.5)
 
             await movimento(0.65, 950)
             await spike.Girar(80)
-            
-            await movimento(0.85, 1000)            
-            
-            await spike.Girar(12)
+
+            await movimento(0.85, 1000)
+
+            await spike.Girar(10)
 
 
             await motor_pair.move_for_time(motor_pair.PAIR_1, 4300, 0, velocity=1000)
@@ -372,12 +372,12 @@ class Lancamentos():
                     if button.pressed(button.RIGHT):
                         await movimento(0.6,1000)
 
-                        await spike.Girar(-7.8)
+                        await spike.Girar(-6)
                         await movimento(0.9, 600, 'YES', 1)
 
-                        await spike.Girar(-5)
+                        await spike.Girar(-8)
 
-                        await movimento(0.5, 600)
+                        await movimento(0.55, 600)
 
                         await motor.run_for_time(port.B, 500, -300)
 
@@ -389,13 +389,13 @@ class Lancamentos():
             motor.reset_relative_position(port.D, 0)
 
 
-            await movimento(0.52,900)
+            await movimento(0.5,900)
             await motor.run_for_time(port.B, 560, -300)
             await movimento(duration_seconds= 0.9, power=-900 )
             await motor.run_for_time(port.B, 490, 490 )
             time.sleep_ms(2500)
 
-            await movimento(0.905, 800, 'NO')
+            await movimento(0.9, 800, 'NO')
             await motor.run_for_time(port.B, 1300, -45)
             await motor.run_for_time(port.B, 700, 400)
             await movimento(0.5, -900)
@@ -405,7 +405,7 @@ class Lancamentos():
 
             await movimento(0.55, 900)
             await spike.Girar(90)
-            await movimento(1.07, 1000, 'YES')
+            await movimento(1.1, 1000, 'YES')
             await spike.Girar(90, 'NO')
             await motor.run_for_time(port.D, 500, -350)
             time.sleep_ms(100)
@@ -429,7 +429,7 @@ class Lancamentos():
 
             # await movimento(1.75, -900)
 
-            
+
 
     async def L03(self):
         motor_pair.pair(motor_pair.PAIR_1, port.F, port.E)
@@ -437,18 +437,18 @@ class Lancamentos():
         await movimento(0.7, 700, 'NO')
         await spike.Girar(76)
         await movimento(1.655, 700, 'YES', 1)
-        
-        
+
+
         await motor.run_for_time(port.D, 1000, -590)
 
 
         # await motor.run_for_time(port.D, 750, 890)
 
         await movimento(0.5, 500)
- 
+
         await movimento(1.7, -1000)
-        # await spike.Girar(-25 
-    
+        # await spike.Girar(-25
+
     async def L04(self):
 
                 motor_pair.pair(motor_pair.PAIR_1, port.F, port.E)
@@ -505,7 +505,7 @@ class Lancamentos():
             await spike.Manutencao_Guinada()
 
             #Entrega no navio
-            await spike.mover_forward(1.05, 'NO', 200)
+            await spike.mover_forward(1.05, 'NO', 400)
 
             # Tempo para reposicionamento
             time.sleep(3)
@@ -569,18 +569,18 @@ class Lancamentos():
 
         await movimento(2.44, 600, 'YES')
         await spike.Girar(-25)
-    
+
         await movimento(0.72)
-        
+
         await motor.run_for_time(port.D, 960, 100, stop=HOLD)
         time.sleep(0.97)
-        
+
         await movimento(0.8, -1000)
-        
+
         # time.sleep_ms(700)
-        
+
         await spike.Girar(45)
-        
+
         await movimento(1.5, -1000)
 
         # await motor_pair.move_for_time(motor_pair.PAIR_1, 3400, 70, velocity=-900)
@@ -592,10 +592,10 @@ class Lancamentos():
                 await movimento(1.9, 1000, 'YES' )
 
                 await spike.Girar(80, 'no')
-                
-                await movimento(0.88, 1000)
 
-                await spike.Girar(-30, 'NO')
+                await movimento(0.85, 1000)
+
+                await spike.Girar(-35, 'NO')
 
                 await movimento(0.78, 600)
 
@@ -603,13 +603,13 @@ class Lancamentos():
 
                 await movimento(0.58, 900)
 
-                await movimento(0.56, -900)
+                await movimento(0.51, -900)
 
                 await spike.Girar(50)
 
-                await movimento(0.95, 700)
-                
-                await movimento(0.67, -800)
+                await movimento(1.05, 700)
+
+                await movimento(0.75, -800)
 
 
 
@@ -643,7 +643,7 @@ async def ButtonCollor():
                     await lancamento.L01()
                     status = 'YES'
                     break
-            
+
 
         elif cor is color.RED:
             light.color(light.POWER, color.RED)
@@ -700,7 +700,7 @@ async def ButtonCollor():
                     time.sleep(0.2)
                     await lancamento.L07()
                     status = 'YES'
-    
+
 
         elif cor is color.YELLOW:
             light.color(light.POWER, color.YELLOW)
